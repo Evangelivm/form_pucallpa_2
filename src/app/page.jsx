@@ -41,6 +41,22 @@ function LoginForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
+  // Usar el esquema de validación actualizado según el tipo de participante
+  const formSchema = userSchema.superRefine((values, ctx) => {
+    if (tipoParticipante === "empresa") {
+      if (!values.ruc || !values.raz_soc) {
+        ctx.addIssue({
+          path: ["ruc"],
+          message: "El RUC es obligatorio para empresas",
+        });
+        ctx.addIssue({
+          path: ["raz_soc"],
+          message: "La razón social es obligatoria para empresas",
+        });
+      }
+    }
+  });
+
   const {
     register,
     handleSubmit,
@@ -48,7 +64,7 @@ function LoginForm() {
     watch,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(userSchema),
+    resolver: zodResolver(formSchema),
   });
   const [cityOptions, setCityOptions] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -71,6 +87,7 @@ function LoginForm() {
       toast.error("Hay errores en el formulario");
     }
   }, [errors]);
+
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     //console.log("Formulario enviado con datos:", data); // Verifica los datos del formulario
@@ -93,6 +110,8 @@ function LoginForm() {
         monto = "350";
       } else if (tipoParticipante === "empresa") {
         monto = "350";
+        formData.append("ruc", data.ruc);
+        formData.append("raz_soc", data.raz_soc);
       }
 
       // Agregar el monto a formData
@@ -274,6 +293,38 @@ function LoginForm() {
                       )}
                     </div>
                   </div>
+                  {tipoParticipante === "empresa" && (
+                    <div className="grid gap-4 sm:gap-2 md:grid-cols-2 md:gap-4">
+                      <div className="grid gap-2">
+                        <Label htmlFor="nombre">RUC</Label>
+                        <Input
+                          id="ruc"
+                          placeholder="Indique RUC"
+                          required
+                          {...register("ruc")}
+                        />
+                        {errors.ruc?.message && (
+                          <p className="text-xs text-red-600 px-2">
+                            {errors.ruc?.message}
+                          </p>
+                        )}
+                      </div>
+                      <div className="grid gap-2">
+                        <Label htmlFor="apellido">Raz&oacute;n Social</Label>
+                        <Input
+                          id="raz_soc"
+                          placeholder="Colocar Raz&oacute;n Social"
+                          required
+                          {...register("raz_soc")}
+                        />
+                        {errors.raz_soc?.message && (
+                          <p className="text-xs text-red-600 px-2">
+                            {errors.raz_soc?.message}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </>
               )}
 

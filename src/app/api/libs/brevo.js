@@ -10,7 +10,7 @@ apiInstance.setApiKey(
   process.env.BREVO_API_KEY
 );
 
-export async function sendEmail({ code, mail, name }) {
+export async function sendEmail({ mail, name }) {
   try {
     const smtpEmail = new brevo.SendSmtpEmail();
     smtpEmail.subject = "Correo de confirmacion de Inscripcion";
@@ -21,7 +21,7 @@ export async function sendEmail({ code, mail, name }) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Confirmación de Pago</title>
+    <title>Pre-inscripción</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -94,10 +94,10 @@ export async function sendEmail({ code, mail, name }) {
         src="https://reactivapetrol.online/assets/img/speakers/evento2024.jpg"
         alt="Imagen del evento"
       />
-      <h1>Autoridades Nacionales, Regionales y Locales</h1>
-      <h2>Confirmaci&oacute;n de Inscripci&oacute;n</h2>
+      <h1>Confirmaci&oacute;n de Pre-inscripci&oacute;n</h1>
+
       <p class="detalle">
-        <b>${name}</b>, su inscripci&oacute;n ha sido procesada exitosamente.
+        <b>${name}</b>, su pre-inscripci&oacute;n ha sido procesada exitosamente.
       </p>
       <p class="detalle">
         <b>Foro Nacional:</b> Reactivaci&oacute;n Petrolera en la Region Ucayali
@@ -105,24 +105,7 @@ export async function sendEmail({ code, mail, name }) {
       <p class="detalle"><b>Lugar:</b> Hotel Costa del Sol - Pucallpa</p>
       <p class="detalle"><b>Fecha del Evento:</b> 18 de Octubre de 2024</p>
       <p class="detalle"><b>Hora:</b> 08:00 AM - 18:00 PM</p>
-      <p class="codigo">C&oacute;digo de Confirmaci&oacute;n: ${code}</p>
-      <div
-        style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr))"
-      >
-        <div>
-          <img
-            src="https://quickchart.io/qr?text=${code}&ecLevel=Q&size=180&format=png&margin=1"
-            alt="Código QR de Confirmación"
-          />
-        </div>
-        <div
-          style="
-            display: grid;
-            grid-template-rows: repeat(1, minmax(0, 1fr));
-            align-items: center;
-          "
-        >
-          <div>
+          <div style="padding-top: 10px;">
             <a
               class="boton"
               href='http://reactivapetrol.online'"
@@ -130,11 +113,11 @@ export async function sendEmail({ code, mail, name }) {
               Ver Detalles del Evento
           </a>
           </div>
-        </div>
-      </div>
+
     </div>
   </body>
 </html>
+
 
     `;
     smtpEmail.sender = {

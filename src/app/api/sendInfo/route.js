@@ -74,10 +74,10 @@ export async function POST(request) {
     const [result] = await conn.execute(query, values);
 
     // Si la inserción fue exitosa, enviar el correo
-    // const name = formData.get("nombre");
-    // const mail = formData.get("email");
+    const name = formData.get("nombre");
+    const mail = formData.get("email");
 
-    // await email(name, mail, codigo); // Enviar el correo después de la inserción
+    await email(name, mail); // Enviar el correo después de la inserción
 
     // Manejo del archivo si se ha subido uno
     //if (data.imagen) {

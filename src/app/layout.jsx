@@ -3,7 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 
 export const metadata = {
-  title: "Registro Entidades Estatales",
+  title: "Inscripcion",
   description: "Formulario",
 };
 
