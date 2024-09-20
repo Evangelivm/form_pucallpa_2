@@ -130,7 +130,7 @@ function LoginForm() {
             Pre-inscripci&oacute;n al Evento Top Petrolero del 2024
           </CardTitle>
           <CardDescription>
-            Ingrese su informaci&oacute;n de registro para inscribirse
+            Ingrese su informaci&oacute;n de registro para pre-inscribirse
           </CardDescription>
         </CardHeader>
         <CardContent>
