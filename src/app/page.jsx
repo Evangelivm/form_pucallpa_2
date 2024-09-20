@@ -127,7 +127,7 @@ function LoginForm() {
       <Card className="mx-auto md:p-2 md:max-w-5xl sm:max-w-sm">
         <CardHeader>
           <CardTitle className="text-xl">
-            Inscripci&oacute;n al Evento Top Petrolero del 2024
+            Pre-inscripci&oacute;n al Evento Top Petrolero del 2024
           </CardTitle>
           <CardDescription>
             Ingrese su informaci&oacute;n de registro para inscribirse
