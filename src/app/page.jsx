@@ -28,7 +28,6 @@ import { userSchema } from "./valid/userSchema";
 import { Toaster, toast } from "sonner";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useTransaction } from "./context/TransactionContext";
 import {
   Loader2,
   Banknote,
@@ -41,7 +40,7 @@ import {
 function LoginForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
-  const { setTransactionData } = useTransaction();
+
   const {
     register,
     handleSubmit,
