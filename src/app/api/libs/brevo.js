@@ -99,6 +99,9 @@ export async function sendEmail({ mail, name }) {
       <p class="detalle">
         <b>${name}</b>, su pre-inscripci&oacute;n ha sido procesada exitosamente.
       </p>
+      <p class="detalle"><b>
+         Recibir&aacute; un correo confirmando su pago, junto con el QR y c&oacute;digo para el ingreso al evento.</b>
+      </p>
       <p class="detalle">
         <b>Foro Nacional:</b> Reactivaci&oacute;n Petrolera en la Region Ucayali
       </p>
@@ -117,8 +120,6 @@ export async function sendEmail({ mail, name }) {
     </div>
   </body>
 </html>
-
-
     `;
     smtpEmail.sender = {
       name: "Inscripciones",
