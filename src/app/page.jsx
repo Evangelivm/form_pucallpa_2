@@ -365,7 +365,7 @@ function LoginForm() {
                             </li>
                             <li>
                               Para Yape o Plin, realice el pago al número{" "}
-                              <b>933928962</b>.
+                              <b>945709570</b>.
                             </li>
                             <li>
                               Para Transferencias Bancarias, use la cuenta BBVA{" "}
